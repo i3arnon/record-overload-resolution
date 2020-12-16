@@ -3,10 +3,10 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 
-var collection = new HamsterCollection();
+var collection = new AnimalCollection();
 await collection.FooAsync(
-    _ => true,
-    Builders<Hamster>.Update.Set(entity => entity.Name, "bar"));
+    entity => entity.Name! == "bar",
+    Builders<Hamster>.Update.Set(entity => entity.Name, "foo"));
 
 public abstract record Collection
 {
@@ -28,7 +28,7 @@ public abstract record Collection<T> : Collection
         throw new NotImplementedException();
 }
 
-public sealed record HamsterCollection : Collection<Hamster>
+public sealed record AnimalCollection : Collection<Animal>
 {
 }
 
@@ -36,7 +36,11 @@ public abstract class Document
 {
 }
 
-public sealed class Hamster : Document
+public abstract class Animal : Document
 {
-    public string Name { get; private set; }
+}
+
+public sealed class Hamster : Animal
+{
+    public string? Name { get; private set; }
 }
