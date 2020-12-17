@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 
 var collection = new AnimalCollection();
+
 await collection.FooAsync(
     entity => entity.Name! == "bar",
     Builders<Hamster>.Update.Set(entity => entity.Name, "foo"));
