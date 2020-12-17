@@ -15,13 +15,13 @@ public abstract record Collection
 public abstract record Collection<T> : Collection
     where T : Document
 {
-    public async Task FooAsync<TDerived>(
+    public Task FooAsync<TDerived>(
         Expression<Func<TDerived, bool>> filter,
         UpdateDefinition<TDerived> updateDefinition)
         where TDerived : T =>
         throw new NotImplementedException();
 
-    public async Task FooAsync<TDerived>(
+    public Task FooAsync<TDerived>(
         FilterDefinition<TDerived> filterDefinition,
         UpdateDefinition<TDerived> updateDefinition)
         where TDerived : T =>
