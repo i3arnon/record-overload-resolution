@@ -18,18 +18,14 @@ public abstract record Collection<T> : Collection
     public Task FooAsync<TDerived>(
         Expression<Func<TDerived, bool>> filter,
         UpdateDefinition<TDerived> updateDefinition)
-        where TDerived : T
-    {
+        where TDerived : T =>
         throw new NotImplementedException();
-    }
 
     public Task FooAsync<TDerived>(
         FilterDefinition<TDerived> filterDefinition,
         UpdateDefinition<TDerived> updateDefinition)
-        where TDerived : T
-    {
+        where TDerived : T =>
         throw new NotImplementedException();
-    }
 }
 
 public sealed record AnimalCollection : Collection<Animal>
